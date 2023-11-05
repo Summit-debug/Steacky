@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-class ShoppingCategory {
+class ShoppingCategory {//class 1
 
     String name;
     List<Product> products = new ArrayList<>();
@@ -29,7 +29,7 @@ class ShoppingCategory {
     }
 }
 
-class OutfitShopping extends ShoppingCategory {
+class OutfitShopping extends ShoppingCategory {//class2
 
     public OutfitShopping() {
         super("Outfit");
@@ -43,7 +43,6 @@ class OutfitShopping extends ShoppingCategory {
         System.out.println("༒👕𝓦𝓮𝓵𝓬𝓸𝓶𝓮 𝓽𝓸 𝓞𝓾𝓽𝓯𝓲𝓽 𝓢𝓱𝓸𝓹𝓹𝓲𝓷𝓰!👕꧂");
         showAvailableItems();
 
-        // Get user's selection
         System.out.print("Enter the number of the outfit you want to buy: ");
         int selection = scanner.nextInt();
 
@@ -57,7 +56,7 @@ class OutfitShopping extends ShoppingCategory {
     }
 }
 
-class GroceryShopping extends ShoppingCategory {
+class GroceryShopping extends ShoppingCategory {//class3
 
     public GroceryShopping() {
         super("Grocery");
@@ -74,7 +73,6 @@ class GroceryShopping extends ShoppingCategory {
         System.out.println("•´¯`•. 𝕎𝕖𝕝𝕔𝕠𝕞𝕖 𝕥𝕠 𝔾𝕣𝕠𝕔𝕖𝕣𝕪 𝕊𝕙𝕠𝕡𝕡𝕚𝕟𝕘! .•´¯`•");
         showAvailableItems();
 
-        // Get user's selection
         System.out.print("Enter the number of the grocery item you want to buy: ");
         int selection = scanner.nextInt();
 
@@ -88,7 +86,7 @@ class GroceryShopping extends ShoppingCategory {
     }
 }
 
-class FruitShopping extends ShoppingCategory {
+class FruitShopping extends ShoppingCategory {//class 4
 
     public FruitShopping() {
         super("Fruit");
@@ -104,7 +102,6 @@ class FruitShopping extends ShoppingCategory {
         System.out.println("🍌.𝓦𝓮𝓵𝓬𝓸𝓶𝓮 𝓽𝓸 𝓕𝓻𝓾𝓲𝓽 𝓢𝓱𝓸𝓹𝓹𝓲𝓷𝓰!🍌.\n");
         showAvailableItems();
 
-        // Get user's selection
         System.out.print("Enter the number of the fruit item you want to Buy: \n");
         int selection = scanner.nextInt();
 
@@ -134,48 +131,7 @@ class FruitShopping extends ShoppingCategory {
     }
 }
 
-class Product {
-
-    String name;
-    double price;
-    int quantity;
-
-    public Product(String name, double price, int quantity) {
-        this.name = name;
-        this.price = price;
-        this.quantity = quantity;
-    }
-}
-
-class ShoppingCart {
-
-    String customerName;
-    List<Product> cartItems = new ArrayList<>();
-    double totalCost = 0.0;
-
-    public ShoppingCart(String customerName) {
-        this.customerName = customerName;
-    }
-
-    public void addItem(Product product) {
-        cartItems.add(product);
-        totalCost += product.price * product.quantity; // Calculate total cost based on quantity
-    }
-
-    public void displayCart() {
-        System.out.println("\n★彡[" + customerName + "'s Shopping Cart]彡★");
-
-        System.out.println("\n彡Items in the cart:");
-        for (Product item : cartItems) {
-            System.out.println(item.name + " - Quantity: " + item.quantity);
-        }
-
-        System.out.println("彡Total Cost: Rs. " + totalCost);
-        System.out.println("\n\n(′︿‵｡) T♥h♥a♥n♥k♥ ♥y♥o♥u♥ ♥f♥o♥r♥ ♥s♥h♥o♥p♥p♥i♥n♥g♥ ♥a♥t♥ ♥t♥h♥e♥ ♥S♥h♥o♥p♥p♥i♥n♥g♥ ♥M♥a♥l♥l (|||❛︵❛.), " + customerName + "!");
-    }
-}
-
-class Customer {
+class Customer { //class 5
 
     String name;
     ShoppingCart cart;
@@ -194,7 +150,48 @@ class Customer {
     }
 }
 
-public class ShoppingMall {
+class Product { //class 5
+
+    String name;
+    double price;
+    int quantity;
+
+    public Product(String name, double price, int quantity) {
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+    }
+}
+
+class ShoppingCart { //class 6
+
+    String customerName;
+    List<Product> cartItems = new ArrayList<>();
+    double totalCost = 0.0;
+
+    public ShoppingCart(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public void addItem(Product product) {
+        cartItems.add(product);
+        totalCost += product.price * product.quantity;
+    }
+
+    public void displayCart() {
+        System.out.println("\n★彡[" + customerName + "'s Shopping Cart]彡★");
+
+        System.out.println("\n彡Items in the cart:");
+        for (Product item : cartItems) {
+            System.out.println(item.name + " - Quantity: " + item.quantity);
+        }
+
+        System.out.println("彡Total Cost: Rs. " + totalCost);
+        System.out.println("\n\n(′︿‵｡) T♥h♥a♥n♥k♥ ♥y♥o♥u♥ ♥f♥o♥r♥ ♥s♥h♥o♥p♥p♥i♥n♥g♥ ♥a♥t♥ ♥t♥h♥e♥ ♥S♥h♥o♥p♥p♥i♥n♥g♥ ♥M♥a♥l♥l (|||❛︵❛.), " + customerName + "!");
+    }
+}
+
+public class ShoppingMall { //class 8
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -217,26 +214,30 @@ public class ShoppingMall {
 
             System.out.println("\n" + customerName + ", please select your items:\n");
 
+            OUTER:
             while (true) {
                 System.out.println("Select a shopping category: ");
                 System.out.println("1. Outfit Shopping ");
                 System.out.println("2. Grocery Shopping ");
                 System.out.println("3. Fruit Shopping ");
                 System.out.println("4. Finish shopping \n");
-
                 System.out.print("Enter your choice:\n");
                 int choice = scanner.nextInt();
-
-                if (choice == 1) {
-                    outfitShopping.shop(customer);
-                } else if (choice == 2) {
-                    groceryShopping.shop(customer);
-                } else if (choice == 3) {
-                    fruitShopping.shop(customer);
-                } else if (choice == 4) {
-                    break;
-                } else {
-                    System.out.println("Invalid choice. Please try again.");
+                switch (choice) {
+                    case 1:
+                        outfitShopping.shop(customer);
+                        break;
+                    case 2:
+                        groceryShopping.shop(customer);
+                        break;
+                    case 3:
+                        fruitShopping.shop(customer);
+                        break;
+                    case 4:
+                        break OUTER;
+                    default:
+                        System.out.println("Invalid choice. Please try again.");
+                        break;
                 }
             }
         }
@@ -245,7 +246,6 @@ public class ShoppingMall {
         for (Customer customer : customers) {
             customer.displayCart();
         }
-
         scanner.close();
     }
 }
