@@ -150,7 +150,7 @@ class Customer { //class 5
     }
 }
 
-class Product { //class 5
+class Product { //class 6
 
     String name;
     double price;
@@ -163,7 +163,7 @@ class Product { //class 5
     }
 }
 
-class ShoppingCart { //class 6
+class ShoppingCart { //class 7
 
     String customerName;
     List<Product> cartItems = new ArrayList<>();
