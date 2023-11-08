@@ -105,28 +105,34 @@ class FruitShopping extends ShoppingCategory {//class 4
         System.out.print("Enter the number of the fruit item you want to Buy: \n");
         int selection = scanner.nextInt();
 
-        if (selection == 1) {
-            System.out.print("Enter the number of kilograms of apples you want to buy: ");
-            int appleKilograms = (int) scanner.nextDouble();
-            customer.addItemToCart(new Product("Apple: ", 150, appleKilograms));
-            System.out.println("You have selected " + appleKilograms + " kilograms of apples.");
-        } else if (selection == 2) {
-            System.out.print("Enter the number of dozens of bananas you want to buy: ");
-            int bananaDozens = scanner.nextInt();
-            customer.addItemToCart(new Product("Banana:", 60.0, bananaDozens));
-            System.out.println("You have selected " + bananaDozens + " dozen(s) of bananas.");
-        } else if (selection == 3) {
-            System.out.print("Enter the number of KG of Orange you want to buy: ");
-            int orangeKilograms = scanner.nextInt();
-            customer.addItemToCart(new Product("Orange:", 150.0, orangeKilograms));
-            System.out.println("You have selected " + orangeKilograms + " KG(s) of Orange.");
-        } else if (selection == 4) {
-            System.out.print("Enter the number of kg of Mango you want to buy: ");
-            int mangoKilograms = scanner.nextInt();
-            customer.addItemToCart(new Product("Mango:", 360.0, mangoKilograms));
-            System.out.println("You have selected " + mangoKilograms + " KG(s) of Mango.");
-        } else {
-            System.out.println("Invalid selection. Please try again.\n");
+        switch (selection) {
+            case 1:
+                System.out.print("Enter the number of kilograms of apples you want to buy: ");
+                int appleKilograms = (int) scanner.nextDouble();
+                customer.addItemToCart(new Product("Apple: ", 150, appleKilograms));
+                System.out.println("You have selected " + appleKilograms + " kilograms of apples.");
+                break;
+            case 2:
+                System.out.print("Enter the number of dozens of bananas you want to buy: ");
+                int bananaDozens = scanner.nextInt();
+                customer.addItemToCart(new Product("Banana:", 60.0, bananaDozens));
+                System.out.println("You have selected " + bananaDozens + " dozen(s) of bananas.");
+                break;
+            case 3:
+                System.out.print("Enter the number of KG of Orange you want to buy: ");
+                int orangeKilograms = scanner.nextInt();
+                customer.addItemToCart(new Product("Orange:", 150.0, orangeKilograms));
+                System.out.println("You have selected " + orangeKilograms + " KG(s) of Orange.");
+                break;
+            case 4:
+                System.out.print("Enter the number of kg of Mango you want to buy: ");
+                int mangoKilograms = scanner.nextInt();
+                customer.addItemToCart(new Product("Mango:", 360.0, mangoKilograms));
+                System.out.println("You have selected " + mangoKilograms + " KG(s) of Mango.");
+                break;
+            default:
+                System.out.println("Invalid selection. Please try again.\n");
+                break;
         }
     }
 }
@@ -194,58 +200,59 @@ class ShoppingCart { //class 7
 public class ShoppingMall { //class 8
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("\t\t\t ıllıllı⭐🌟 W͙͙E͙͙L͙͙O͙͙C͙͙M͙͙E͙͙ T͙͙O͙͙ S͙͙H͙͙O͙͙P͙͙P͙͙I͙͙N͙͙G͙͙ M͙͙A͙͙L͙͙L͙͙ 🌟⭐ıllıllı\n\n");
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.println("\t\t\t ıllıllı⭐🌟 W͙͙E͙͙L͙͙O͙͙C͙͙M͙͙E͙͙ T͙͙O͙͙ S͙͙H͙͙O͙͙P͙͙P͙͙I͙͙N͙͙G͙͙ M͙͙A͙͙L͙͙L͙͙ 🌟⭐ıllıllı\n\n");
 
-        System.out.print("Enter the number of customers in the shopping mall: ");
-        int numCustomers = scanner.nextInt();
+            System.out.print("Enter the number of customers in the shopping mall: ");
+            int numCustomers = scanner.nextInt();
 
-        List<Customer> customers = new ArrayList<>();
+            List<Customer> customers = new ArrayList<>();
 
-        OutfitShopping outfitShopping = new OutfitShopping();
-        GroceryShopping groceryShopping = new GroceryShopping();
-        FruitShopping fruitShopping = new FruitShopping();
+            OutfitShopping outfitShopping = new OutfitShopping();
+            GroceryShopping groceryShopping = new GroceryShopping();
+            FruitShopping fruitShopping = new FruitShopping();
 
-        for (int i = 0; i < numCustomers; i++) {
-            System.out.print("Enter the name of Customer " + (i + 1) + ": ");
-            String customerName = scanner.next();
-            Customer customer = new Customer(customerName);
-            customers.add(customer);
+            for (int i = 0; i < numCustomers; i++) {
+                System.out.print("Enter the name of Customer " + (i + 1) + ": ");
+                String customerName = scanner.next();
+                Customer customer = new Customer(customerName);
+                customers.add(customer);
 
-            System.out.println("\n" + customerName + ", please select your items:\n");
+                System.out.println("\n" + customerName + ", please select your items:\n");
 
-            OUTER:
-            while (true) {
-                System.out.println("Select a shopping category: ");
-                System.out.println("1. Outfit Shopping ");
-                System.out.println("2. Grocery Shopping ");
-                System.out.println("3. Fruit Shopping ");
-                System.out.println("4. Finish shopping \n");
-                System.out.print("Enter your choice:\n");
-                int choice = scanner.nextInt();
-                switch (choice) {
-                    case 1:
-                        outfitShopping.shop(customer);
-                        break;
-                    case 2:
-                        groceryShopping.shop(customer);
-                        break;
-                    case 3:
-                        fruitShopping.shop(customer);
-                        break;
-                    case 4:
-                        break OUTER;
-                    default:
-                        System.out.println("Invalid choice. Please try again.");
-                        break;
+                OUTER:
+                while (true) {
+                    System.out.println("Select a shopping category: ");
+                    System.out.println("1. Outfit Shopping ");
+                    System.out.println("2. Grocery Shopping ");
+                    System.out.println("3. Fruit Shopping ");
+                    System.out.println("4. Finish shopping \n");
+                    System.out.print("Enter your choice:\n");
+                    int choice = scanner.nextInt();
+                    switch (choice) {
+                        case 1:
+                            outfitShopping.shop(customer);
+                            break;
+                        case 2:
+                            groceryShopping.shop(customer);
+                            break;
+                        case 3:
+                            fruitShopping.shop(customer);
+                            break;
+                        case 4:
+                            break OUTER;
+                        default:
+                            System.out.println("Invalid choice. Please try again.");
+                            break;
+                    }
                 }
             }
-        }
 
-        // Display each customer's shopping cart
-        for (Customer customer : customers) {
-            customer.displayCart();
+            // Display each customer's Items:shopping cart
+            for (Customer customer : customers) {
+                customer.displayCart();
+            }
         }
-        scanner.close();
     }
 }
+
